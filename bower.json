@@ -1,0 +1,16 @@
+{
+  "name": "ember_base",
+  "version": "0.0.0",
+  "authors": [
+    "Wade Tandy <wade@wadetandy.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
