@@ -10,7 +10,7 @@ gem 'coffee-rails', '~> 4.1.0'
 
 gem 'sass-rails', '~> 5.0'
 gem 'haml'
-gem 'active_model_serializers'
+gem 'active_model_serializers', '~> 0.10.0.rc1'
 
 gem 'devise'
 

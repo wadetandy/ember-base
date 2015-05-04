@@ -1,3 +1,27 @@
-<h2 id="title">Welcome to Ember.js</h2>
+<div class="nav navbar navbar-inverse navbar-fixed-top">
+    <div class='container'>
+        <div class='navbar-header'>
+            {{#link-to "index" class="navbar-brand"}} Site Header {{/link-to}}
+        </div>
+        <div class='navbar-collapse collapse'>
+            <ul class="nav navbar-nav">
+                {{#link-to "index" class="navbar-brand"}} Home {{/link-to}}
+            </ul>
 
-{{outlet}}
+            <ul class="nav navbar-nav pull-right">
+                <li>
+                    {{#if session.isAuthenticated}}
+                      <a {{ action 'invalidateSession' }}>Logout</a>
+                    {{else}}
+                      {{#link-to 'login'}}Login{{/link-to}}
+                    {{/if}}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    {{outlet}}
+</div>

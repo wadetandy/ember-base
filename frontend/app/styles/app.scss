@@ -1,0 +1,9 @@
+@import 'bootstrap-sass/assets/stylesheets/bootstrap';
+
+body {
+  margin-top: 75px;
+}
+
+[data-ember-action] {
+  cursor: pointer;
+}
