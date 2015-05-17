@@ -233,6 +233,13 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
+  require "omniauth-linkedin-oauth2"
+  linked_in_key    =  '77uj3yho60vgx4'
+  linked_in_secret =  'FzFQof0mrbM4TiF7'
+  config.omniauth :linkedin, linked_in_key, linked_in_secret,
+    :strategy_class => OmniAuth::Strategies::LinkedIn,
+    :scope => 'r_basicprofile',
+    :provider_ignores_state => true
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

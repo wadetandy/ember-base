@@ -13,6 +13,8 @@ gem 'haml'
 gem 'active_model_serializers', '~> 0.10.0.rc1'
 
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-linkedin-oauth2'
 
 gem 'activeadmin', '~> 1.0.0.pre1'
 

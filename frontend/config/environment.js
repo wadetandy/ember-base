@@ -23,12 +23,30 @@ module.exports = function(environment) {
     authorizer: 'simple-auth-authorizer:devise'
   }
 
+  ENV['simple-auth-devise'] = {
+    serverTokenEndpoint: '/api/users/sign_in'
+  }
+
+  ENV['simple-auth-torii-oauth2'] = {
+    serverTokenEndpoint: function(provider) {
+      return "/api/auth/${provider}/callback"
+    }
+  }
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.torii = {
+      providers: {
+        'linkedin-oauth-callback': {
+          apiKey: '77uj3yho60vgx4',
+          redirectUri: 'http://localhost:3000/api/auth/linkedin/callback',
+        }
+      }
+    };
   }
 
   if (environment === 'test') {

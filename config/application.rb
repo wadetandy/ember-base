@@ -20,19 +20,23 @@ module EmberBase
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    require 'warden/session_override'
+
     config.generators do |g|
-      g.template_engine :erb
-      g.test_framework  :rspec, :fixture => true, :views => false
+      g.test_framework  :rspec, :fixture => true, :views => false, helpers: false, routing: false
       g.integration_tool :rspec, :fixture => true, :views => true
       g.fixture_replacement :factory_girl, :dir => "spec/support/factories"
+      g.assets = false
+      g.helper = false
+      g.views = false
     end
-
-    config.middleware.use Rack::Cors do
-      allow do
-        origins "*"
-        resource "*", headers: :any, methods: [:get, :post, :put, :delete, :options]
-      end
-    end
+#
+#     config.middleware.use Rack::Cors do
+#       allow do
+#         origins "*"
+#         resource "*", headers: :any, methods: [:get, :post, :put, :delete, :options]
+#       end
+#     end
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true

@@ -1,27 +1,30 @@
 <div class="nav navbar navbar-inverse navbar-fixed-top">
-    <div class='container'>
-        <div class='navbar-header'>
-            {{#link-to "index" class="navbar-brand"}} Site Header {{/link-to}}
-        </div>
-        <div class='navbar-collapse collapse'>
-            <ul class="nav navbar-nav">
-                {{#link-to "index" class="navbar-brand"}} Home {{/link-to}}
-            </ul>
-
-            <ul class="nav navbar-nav pull-right">
-                <li>
-                    {{#if session.isAuthenticated}}
-                      <a {{ action 'invalidateSession' }}>Logout</a>
-                    {{else}}
-                      {{#link-to 'login'}}Login{{/link-to}}
-                    {{/if}}
-                </li>
-            </ul>
-        </div>
+  <div class='container'>
+    <div class='navbar-header'> {{#link-to "index" class="navbar-brand"}} Site Header {{/link-to}}
     </div>
+    <div class='navbar-collapse collapse'>
+      <ul class="nav navbar-nav">
+          {{#link-to "index" class="navbar-brand"}} Home {{/link-to}}
+      </ul>
+
+      <ul class="nav navbar-nav pull-right">
+        {{#if session.isAuthenticated}}
+          <li>
+            <a {{ action 'invalidateSession' }}>Logout</a>
+          </li>
+        {{else}}
+          <li>
+            {{#link-to 'register'}}Sign Up{{/link-to}}
+          </li>
+          <li>
+            {{#link-to 'login'}}Login{{/link-to}}
+          </li>
+        {{/if}}
+      </ul>
+    </div>
+  </div>
 </div>
 
-
 <div class="container">
-    {{outlet}}
+  {{outlet}}
 </div>

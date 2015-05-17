@@ -1,0 +1,25 @@
+:javascript
+  (function() {
+    var user = #{@user.to_json}
+    var postMessageDomain = window.location.protocol+'//'+window.location.host;
+    var postMessagePrefix = "__torii_message:";
+    var postMessage = null
+    // in IE11 window.attachEvent was removed.
+    if (window.attachEvent) {
+      postMessage = function postMessageFixed(win, data) {
+        win.postMessageWithFix(postMessagePrefix+data, postMessageDomain)
+      }
+      window.postMessageWithFix = function postMessageWithFix(data, domain) {
+        setTimeout(function(){
+          window.postMessage(data, domain)
+        }, 0)
+      }
+    } else {
+      postMessage = function postMessageFixed(win, data) {
+        win.postMessage(postMessagePrefix+data, postMessageDomain)
+      }
+    }
+
+    postMessage(window.opener, 'http://foo.com/foobar?email=#{@user.email}&token=#{@user.authentication_token}')
+    window.close()
+  })()
